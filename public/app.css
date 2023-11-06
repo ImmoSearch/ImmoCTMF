@@ -1,0 +1,19 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.centered-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Cela rendra l'image couvrir toute la hauteur de la fenêtre du navigateur. */
+}
+
+.centered-image img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+}
