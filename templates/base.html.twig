@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}M@ Musique{% endblock %}</title>
+    <title>{% block title %}Site ImmoCTMF{% endblock %}</title>
 
     <link rel="stylesheet" href="https://bootswatch.com/5/morph/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
@@ -10,9 +10,9 @@
     {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
     {% block stylesheets %}  {% endblock %}
 </head>
-<body>
+<body style="margin: 0; padding: 0; height: 100vh; overflow: hidden;">
 
-<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+<nav class="navbar navbar-expand-lg bg-light" data-bs-theme="light">
     <div class="container-fluid">
         <a class="navbar-brand" rel="home" href="#" title="Mon Site">
             <a class="navbar-brand" href="{{ path('app_accueil') }}">
@@ -32,8 +32,8 @@
                             <a class="dropdown-item" href="#">Maison & Villa</a>
                             <a class="dropdown-item" href="#">appartement</a>
                             <a class="dropdown-item" href="#">Studio</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Separated link</a>
+                            {# <div class="dropdown-divider"></div> #}
+                            {# <a class="dropdown-item" href="#">Separated link</a> #}
                         </div>
                     </li>
                 </ul>
@@ -41,14 +41,12 @@
         </div>
     </div>
 </nav>
-<div class="jumbotron text-center" style="background-image: url('img/accueil.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center center; background-attachment: fixed; padding-top: 50px;">
+<div class="jumbotron text-center" style="background-image: url('img/accueil.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center center; background-attachment: fixed; padding-top: 50px; height: calc(100vh - 56px);"> <!-- Soustrayez 56px pour tenir compte de la hauteur de la navbar -->
     <div class="container">
         <h1 class="display-4">Bienvenue sur ImmoCTMF</h1>
         <p class="lead">Votre source de biens immobiliers de qualité.</p>
     </div>
 </div>
-
-
 
 {% block body %}{% endblock %}
 
