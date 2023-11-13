@@ -35,7 +35,7 @@ class Annonce
     private $ville;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=500)
      */
     private $description;
 
@@ -50,11 +50,6 @@ class Annonce
     private $cp;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Bien::class, inversedBy="annonces")
-     */
-    private $Biens;
-
-    /**
      * @ORM\ManyToOne(targetEntity=Utilisateur::class, inversedBy="annonces")
      */
     private $Utilisateurs;
@@ -63,6 +58,31 @@ class Annonce
      * @ORM\OneToMany(targetEntity=Message::class, mappedBy="annonce")
      */
     private $Messages;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $prix;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $superficie;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $nb_piece;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $type;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Type::class, inversedBy="annonces")
+     */
+    private $Annonce;
 
    
     public function __construct()
@@ -155,18 +175,6 @@ class Annonce
         return $this;
     }
 
-    public function getBiens(): ?Bien
-    {
-        return $this->Biens;
-    }
-
-    public function setBiens(?Bien $Biens): self
-    {
-        $this->Biens = $Biens;
-
-        return $this;
-    }
-
     public function getUtilisateurs(): ?Utilisateur
     {
         return $this->Utilisateurs;
@@ -206,6 +214,66 @@ class Annonce
                 $message->setAnnonce(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPrix(): ?int
+    {
+        return $this->prix;
+    }
+
+    public function setPrix(int $prix): self
+    {
+        $this->prix = $prix;
+
+        return $this;
+    }
+
+    public function getSuperficie(): ?int
+    {
+        return $this->superficie;
+    }
+
+    public function setSuperficie(int $superficie): self
+    {
+        $this->superficie = $superficie;
+
+        return $this;
+    }
+
+    public function getNbPiece(): ?int
+    {
+        return $this->nb_piece;
+    }
+
+    public function setNbPiece(int $nb_piece): self
+    {
+        $this->nb_piece = $nb_piece;
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(string $type): self
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    public function getAnnonce(): ?Type
+    {
+        return $this->Annonce;
+    }
+
+    public function setAnnonce(?Type $Annonce): self
+    {
+        $this->Annonce = $Annonce;
 
         return $this;
     }

@@ -24,22 +24,25 @@ class AppFixtures extends Fixture
             $lesAnnonces[] = fgetcsv($fichierAnnonceCsv);
         }
         fclose($fichierAnnonceCsv);
-
         foreach ($lesAnnonces as $value) {
-            // Vérifiez si $value est un tableau
             if (is_array($value) && count($value) >= 6) {
                 $annonce = new Annonce();
                 $annonce->setId(intval($value[0] ?? 0))
-                        ->setOrganisme($value[1] ?? '')
-                        ->setNom($value[2] ?? '')
-                        ->setVille($value[3] ?? '')
-                        ->setCp($value[5] ?? '')
-                        ->setDescription($value[4] ?? '')
-                        ->setImage(getRandomUnsplashImageUrl("logo"))
-                        ->setImage(getRandomUnsplashImageUrl("appartements"));
+                    ->setOrganisme($value[1] ?? '')
+                    ->setNom($value[2] ?? '')
+                    ->setVille($value[3] ?? '')
+                    ->setDescription(substr($value[4] ?? '', 0, 500))
+                    ->setImage(getRandomUnsplashImageUrl("appartements"))
+                    ->setCp(substr($value[5] ?? '', 0, 10))
+                    ->setSuperficie($value[6] ?? '')
+                    ->setNbPiece($value[7] ?? '')
+                    ->setType($value[8] ?? '')
+                    ->setPrix(intval($value[9] ?? 0));
+
                 $manager->persist($annonce);
             }
         }
+        
 
         $manager->flush();
     }
