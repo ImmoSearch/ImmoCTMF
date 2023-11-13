@@ -6,14 +6,4 @@ kernel:
     resource: ../../src/Kernel.php
     type: annotation
 
-    # config/routes.yaml
 
-property_list:
-    path: /properties
-    controller: App\Controller\PropertyController::propertyList
-
-# config/routes.yaml
-
-app_liste_biens:
-    path: /liste-biens
-    controller: App\Controller\ListeBiensController::listeBiens
