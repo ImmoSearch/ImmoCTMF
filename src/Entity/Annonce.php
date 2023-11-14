@@ -24,10 +24,6 @@ class Annonce
      */
     private $organisme;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -115,17 +111,6 @@ class Annonce
         return $this;
     }
 
-    public function getNom(): ?string
-    {
-        return $this->nom;
-    }
-
-    public function setNom(string $nom): self
-    {
-        $this->nom = $nom;
-
-        return $this;
-    }
 
     public function getVille(): ?string
     {
