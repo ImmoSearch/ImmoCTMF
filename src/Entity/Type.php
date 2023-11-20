@@ -24,19 +24,23 @@ class Type
      */
     private $typeBien;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Annonce::class, mappedBy="Annonce")
-     */
-    private $annonces;
-
     public function __construct()
     {
         $this->annonces = new ArrayCollection();
+        $this->annonce = new ArrayCollection();
     }
 
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+
+    public function setId(int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
     }
 
     public function getTypeBien(): ?string
@@ -51,33 +55,4 @@ class Type
         return $this;
     }
 
-    /**
-     * @return Collection<int, Annonce>
-     */
-    public function getAnnonces(): Collection
-    {
-        return $this->annonces;
-    }
-
-    public function addAnnonce(Annonce $annonce): self
-    {
-        if (!$this->annonces->contains($annonce)) {
-            $this->annonces[] = $annonce;
-            $annonce->setAnnonce($this);
-        }
-
-        return $this;
-    }
-
-    public function removeAnnonce(Annonce $annonce): self
-    {
-        if ($this->annonces->removeElement($annonce)) {
-            // set the owning side to null (unless already changed)
-            if ($annonce->getAnnonce() === $this) {
-                $annonce->setAnnonce(null);
-            }
-        }
-
-        return $this;
-    }
 }

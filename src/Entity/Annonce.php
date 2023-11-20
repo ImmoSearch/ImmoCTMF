@@ -71,11 +71,6 @@ class Annonce
     private $nb_piece;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $type;
-
-    /**
      * @ORM\ManyToOne(targetEntity=Type::class, inversedBy="annonces")
      */
     private $Annonce;
@@ -239,18 +234,6 @@ class Annonce
         return $this;
     }
 
-    public function getType(): ?string
-    {
-        return $this->type;
-    }
-
-    public function setType(string $type): self
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
     public function getAnnonce(): ?Type
     {
         return $this->Annonce;
@@ -258,8 +241,9 @@ class Annonce
 
     public function setAnnonce(?Type $Annonce): self
     {
+        
         $this->Annonce = $Annonce;
-
+ 
         return $this;
     }
 

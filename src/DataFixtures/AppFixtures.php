@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Type;
 use App\Entity\Annonce;
 use App\Entity\Utilisateur;
 use Doctrine\Persistence\ObjectManager;
@@ -43,6 +44,23 @@ class AppFixtures extends Fixture
                 $manager->persist($utilisateur);
             }
         }
+        
+        // Les types factices
+        $fichierTypeCsv = fopen(__DIR__ . "/type.csv", "r");
+        while (!feof($fichierTypeCsv)) {
+            $lesTypes[] = fgetcsv($fichierTypeCsv);
+        }
+        fclose($fichierTypeCsv);
+        foreach ($lesTypes as $value) {
+                $type = new Type();
+                $type->setId(intval($value[0] ?? 0))
+                    ->setTypeBien($value[1] ?? '');
+                    $this->addReference("type".intval($value[0]),$type);
+                $manager->persist($type);
+            }
+            
+
+
 
         // // Les annonces factices
         $fichierAnnonceCsv = fopen(__DIR__ . "/annonce.csv", "r");
@@ -61,9 +79,9 @@ class AppFixtures extends Fixture
                     ->setCp(substr($value[5] ?? '', 0, 10))
                     ->setSuperficie($value[6] ?? '')
                     ->setNbPiece($value[7] ?? '')
-                    ->setType($value[8] ?? '')
-                    ->setPrix(intval($value[9] ?? 0))
-                    ->setUtilisateurs($this->getReference('utilisateur' . $value[0]));
+                    ->setPrix(intval($value[8] ?? 0))
+                    ->setUtilisateurs($this->getReference('utilisateur' . $value[0]))
+                    ->setAnnonce($this->getReference('type' . mt_rand(1, 5))); 
 
                 $manager->persist($annonce);
             }
