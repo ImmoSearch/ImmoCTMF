@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+    {% for flash_error in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+    {% endfor %}
+
+    <div class="container">
+        <form class="form-signin" method="post">
+            <h1 class="h3 mb-3 font-weight-normal text-center">Inscription</h1>
+
+            <label for="inputEmail" class="sr-only">Email</label>
+            {{ form_row(registrationForm.email, { 'id': 'inputEmail', 'class': 'form-control mb-2', 'placeholder': 'Email', 'required': true, 'autofocus': true }) }}
+            
+
+
+            <label for="inputPassword" class="sr-only">Password</label>
+            {{ form_row(registrationForm.plainPassword, { 'id': 'inputPassword', 'class': 'form-control mb-2', 'placeholder': 'Password', 'required': true }) }}
+
+            <div class="form-check mb-3">
+                {{ form_row(registrationForm.agreeTerms, { 'label_attr': { 'class': 'form-check-label' }, 'attr': { 'class': 'form-check-input' } }) }}
+                {{ form_label(registrationForm.agreeTerms, 'I agree to the terms and conditions', { 'label_attr': { 'class': 'form-check-label' } }) }}
+            </div>
+
+            <button type="submit" class="btn btn-lg btn-primary btn-block">S'Inscrire</button>
+        </form>
+    </div>
+{% endblock %}
