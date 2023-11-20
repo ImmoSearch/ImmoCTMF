@@ -7,3 +7,7 @@ kernel:
     type: annotation
 
 
+# config/routes.yaml
+biens:
+    path: /biens
+    controller: App\Controller\ListeBiensController::listeBiens
