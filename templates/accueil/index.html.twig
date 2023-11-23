@@ -1,12 +1,21 @@
 {% extends 'base.html.twig' %}
-
 {% block title %}Accueil Immo{% endblock %}
 
-{% block content %}
-<div class="jumbotron text-center" style="background-image: url('img/accueil.jpg'); background-size: cover; padding-top: 50px;">
-    <div class="container">
-        <h1 class="display-4">Bienvenue sur ImmoCTMF</h1>
-        <p class="lead">Votre source de biens immobiliers de qualité.</p>
+{% block body %}
+
+    <div class="jumbotron text-center" style="background-image: url('img/accueil.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center center; background-attachment: fixed; padding-top: 50px; height: calc(100vh - 56px); position: relative;">
+        <div class="container">
+            <h1 class="display-4">Bienvenue sur ImmoCTMF</h1>
+            <p class="lead">Votre source de biens immobiliers de qualité.</p>
+        </div>
+    
+        <div class="text-center mt-4">
+            <a href="{{ path('biens') }}" class="btn btn-light">
+                Accéder aux annonces <i class="bi bi-arrow-right"></i>
+            </a>
+        </div>
     </div>
-</div>
+
 {% endblock %}
+
+
