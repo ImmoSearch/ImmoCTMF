@@ -216,18 +216,6 @@
             "./config/routes.yaml"
         ]
     },
-    "symfony/security-bundle": {
-        "version": "5.4",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "main",
-            "version": "5.3",
-            "ref": "98f1f2b0d635908c2b40f3675da2d23b1a069d30"
-        },
-        "files": [
-            "./config/packages/security.yaml"
-        ]
-    },
     "symfony/translation": {
         "version": "5.4",
         "recipe": {
@@ -290,21 +278,6 @@
         "files": [
             "./config/packages/messenger.yaml"
         ]
-    },
-    "symfonycasts/reset-password-bundle": {
-        "version": "1.18",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "main",
-            "version": "1.0",
-            "ref": "97c1627c0384534997ae1047b93be517ca16de43"
-        },
-        "files": [
-            "./config/packages/reset_password.yaml"
-        ]
-    },
-    "symfonycasts/verify-email-bundle": {
-        "version": "v1.14.0"
     },
     "twig/extra-bundle": {
         "version": "v3.7.1"
