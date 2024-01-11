@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fiche Annonce{% endblock %}
+
+{% block body %}
+
+<div class="container">
+
+    <h1 class="pt-2 text-center" style="color:white">Fiche de l'annonce</h1>
+    <hr>
+    <div class="row pt-2">
+
+        <h3>Détails du Bien</h3>
+
+        <table class="table table-hover mx-auto">
+            <thead>
+                <tr>
+                    <th scope="col-3">Vendeur</th>
+                    <th scope="col-3">Type</th>
+                    <th scope="col-4">Ville & Code Postale</th>
+                    <th scope="col-1">Prix</th>
+                    <th scope="col-3">Superficie</th>
+                    <th scope="col-1">Nbr de Pièce</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="table-active">
+                    <td>{{ leAnnonce.organisme }}</td>
+                    <td>{{ leAnnonce.annonce.typebien }}</td>
+                    <td>{{ leAnnonce.ville }} , {{ leAnnonce.cp }}</td>
+                    <td>{{ leAnnonce.prix }}</td>
+                    <td>{{ leAnnonce.superficie }} m²</td>
+                    <td>{{ leAnnonce.nbPiece }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <div class="card">
+    <img src="{{ leAnnonce.image }}" alt="Image Description" style="height:450px">
+    <br><br>
+    <div class="card-content">
+        <p class="card-description" style="color:black;font-size:28px;">{{ leAnnonce.description }}</p>
+    </div>
+
+    <br>
+
+    <br> <br>
+
+{% endblock %}

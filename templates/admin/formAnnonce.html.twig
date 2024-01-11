@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter une annonce{% endblock %}
+
+{% block body %}
+{# formulaire #}
+<div class="container">
+    <h1 class="pt-2 text-center" style="color:white">
+        {% if app.request.attributes.get('_route')=="admin_annonces_ajout" %}
+            Ajouter
+        {% else %}
+            Modifier
+        {% endif %}
+    une annonce</h1>
+
+    
+    <br>
+
+    {{form_start(formAnnonce,{'attr':{'novalidate':'novalidate'}})}}
+
+    {{form_row(formAnnonce.organisme,{'label':"Nom de l'annonce"})}}
+    {{form_row(formAnnonce.description)}}
+    <div class="row">
+    </div>
+
+    {{form_row(formAnnonce.image)}}
+
+    <br>
+    {# Les boutons #}
+    <div class="row justify-content-center">
+        <div class="col-auto">
+            <a href="{{ path('adminA') }}" class="btn btn-warning">Annuler</a>
+        </div>
+        <div class="col-auto">
+            <input type="submit" class="btn btn-success" value={% if app.request.attributes.get('_route')=="admin_annonces_ajout" %}
+               "Ajouter l'annonce"
+            {% else %}
+                "Modifier l'annonce"
+            {% endif %}
+            >
+        </div>
+    </div>
+
+
+
+
+
+
+    {{form_end(formAnnonce)}}
+</div>
+
+<br><br><br>
+{% endblock %}

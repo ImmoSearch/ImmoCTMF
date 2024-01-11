@@ -42,17 +42,14 @@ class AnnonceRepository extends ServiceEntityRepository
 //    /**
 //     * @return Annonce[] Returns an array of Annonce objects
 //     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('a')
-//            ->andWhere('a.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('a.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    public function listeAnnoncesCompletePaginee()
+    {
+        return $this->createQueryBuilder('ann')
+            // ->select('ann', 'a')
+            ->leftJoin('ann.Annonce', 'a')
+            // ->orderBy('ann.organisme', 'ASC')
+            ->getQuery();
+    }
 
 //    public function findOneBySomeField($value): ?Annonce
 //    {
