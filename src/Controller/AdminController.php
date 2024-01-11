@@ -32,7 +32,7 @@ class AdminController extends AbstractController
             $manager->persist($annonce);
             $manager->flush();
             $this->addFlash("success", "L'annonce a été ajoutée/modifiée avec succès");
-            return $this->redirectToRoute('admin/formAnnonce.html.twig');
+            return $this->redirectToRoute('app_admin_form');
         }
 
         return $this->render('admin/cruda.html.twig', [

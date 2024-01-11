@@ -18,11 +18,9 @@
 
     {{form_start(formAnnonce,{'attr':{'novalidate':'novalidate'}})}}
 
-    {{form_row(formAnnonce.nom,{'label':"Nom de l'annonce"})}}
+    {{form_row(formAnnonce.organisme,{'label':"Nom de l'annonce"})}}
     {{form_row(formAnnonce.description)}}
     <div class="row">
-        <div class="col">{{form_row(formAnnonce.site)}}</div>
-        <div class="col">{{form_row(formAnnonce.type)}}</div>
     </div>
 
     {{form_row(formAnnonce.image)}}
@@ -31,7 +29,7 @@
     {# Les boutons #}
     <div class="row justify-content-center">
         <div class="col-auto">
-            <a href="{{ path('admin_annonces') }}" class="btn btn-warning">Annuler</a>
+            <a href="{{ path('adminA') }}" class="btn btn-warning">Annuler</a>
         </div>
         <div class="col-auto">
             <input type="submit" class="btn btn-success" value={% if app.request.attributes.get('_route')=="admin_annonces_ajout" %}
@@ -50,4 +48,6 @@
 
     {{form_end(formAnnonce)}}
 </div>
+
+<br><br><br>
 {% endblock %}
