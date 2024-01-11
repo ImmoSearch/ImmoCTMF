@@ -1,65 +1,74 @@
 html, body {
     overflow-y: auto;
-  }
-  /* public/css/styles.css */
+}
+
+/* public/css/styles.css */
 
 /* Customize pagination styles */
 .pagination {
-  display: flex;
-  justify-content: center;
-  box-shadow: none;
+    display: flex;
+    justify-content: center;
+    box-shadow: none;
 }
 
 .pagination li {
-  list-style: none;
-  margin: 0 5px;
+    list-style: none;
+    margin: 0 5px;
 }
 
 .pagination a, .pagination span {
-  display: inline-block;
-  padding: 8px 12px;
-  min-width: 40px; /* Set a minimum width for all items */
-  text-align: center; /* Center text within the items */
-  border: 1px solid #ddd;
-  text-decoration: none;
-  color: #333;
-  background-color: #fff;
+    display: inline-block;
+    padding: 8px 12px;
+    min-width: 40px; /* Set a minimum width for all items */
+    text-align: center; /* Center text within the items */
+    border: 1px solid #ddd;
+    text-decoration: none;
+    color: #333;
+    background-color: #fff;
 }
 
 .pagination a:hover {
-  background-color: #eee;
+    background-color: #eee;
 }
 
 .pagination .active a {
-  background-color: #007;
-  color: #fff; /* Ensure text is readable on the active page */
+    background-color: #007;
+    color: #fff; /* Ensure text is readable on the active page */
 }
 
-
 .card {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
 }
 
 .card img {
-  width: 100%;
-  height: auto;
-  border-bottom: 1px solid #ddd;
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #ddd;
 }
 
 .card-content {
-  padding: 20px;
+    padding: 20px;
 }
 
 .card-title {
-  font-size: 24px;
-  margin-bottom: 10px;
+    font-size: 24px;
+    margin-bottom: 10px;
 }
 
 .card-description {
-  font-size: 16px;
-  color: #666;
+    font-size: 16px;
+    color: #666;
+}
+
+.avatar {
+    border-radius: 80%;
+}
+
+.supermini {
+    max-width: 40px;
+    height: auto;
 }
