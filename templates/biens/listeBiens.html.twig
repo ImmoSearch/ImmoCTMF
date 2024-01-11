@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fiche du Biens{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1 class="pt-2 text-center" style="color: black">Annonces des Biens d'Île-de-France</h1>
+    <hr>
+
+    <div class="filtrage container">
+        <div class="row">
+            {# Filtre par données #}
+            <div class="col-md-6">
+                <h4>Filtrer par données :</h4>
+                <form>
+                    <label for="choix1">Sélectionnez par données :</label>
+                    <select id="choix1" name="choix1">
+                        <option value="prix">Prix</option>
+                        <option value="superficie">Superficie</option>
+                        <option value="nombre_pieces">Nombre de pièces</option>
+                        <option value="vendeur">Organisme</option>
+                    </select>
+                    <input type="submit" value="Rechercher">
+                </form>
+            </div>
+
+            {# Filtre par Biens #}
+            <div class="col-md-6">
+                <h4>Filtrer par biens :</h4>
+                <form>
+                    <label for="choix2">Sélectionnez par biens :</label>
+                    <select id="choix2" name="choix2">
+                        <option value="appartement">Appartement</option>
+                        <option value="maison">Maison</option>
+                        <option value="villa">Villa</option>
+                        <option value="studios">Studios</option>
+                        <option value="hlm">HLM</option>
+                    </select>
+                    <input type="submit" value="Rechercher">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="row pt-2">
+        {% for leAnnonce in lesAnnonces %}
+            <div class="col-md-3 mb-3">
+                <div class="card">
+                    <img class="mx-auto d-block w-100" style="max-height: 150px; margin: auto; display: block;" src="{{ leAnnonce.image }}" alt="Card image">
+
+                    <h3 class="card-header" style="color: red">
+                        <a href="{{ path('ficheBien', {'id': leAnnonce.id }) }}">{{ leAnnonce.annonce.typebien }}</a> - {{ leAnnonce.prix }} €
+                    </h3>
+
+                    <div class="card-body">
+                        <p class="card-text">{{ leAnnonce.ville }} &nbsp;&nbsp; {{ leAnnonce.cp }} </p>
+                        <p class="card-text">Vendeur : {{ leAnnonce.organisme }}</p>
+                        <p class="card-text">{{ leAnnonce.superficie }} km² - Nombre de pièces : {{ leAnnonce.NbPiece }} </p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="navi text-center mt-3 mb-3">
+            {{ knp_pagination_render(lesAnnonces) }}
+        </div>
+<br><br>
+
+{% endblock %}

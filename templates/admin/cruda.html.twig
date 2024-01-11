@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des annonces{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <h1 class="pt-2 text-center" style="color:white">Gestion des annonces</h1>
+    <div class="d-flex justify-content-end">
+    <a href="{{ path('app_admin_form') }}" class="btn btn-success" style="border-radius: 4px;">
+        <img src="{{ asset('img/ajout.png') }}" style="width: 27px" class="mr-2"> Ajouter une annonce
+    </a>
+</div>
+
+
+    <hr>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+            <th scope="col-1"></th>
+            <th scope="col-2">Nom</th>
+            <th scope="col-7">Détail</th>
+            <th scope="col-2">Actions</th>
+            </tr>
+        </thead>
+
+        {% for leAnnonce in lesAnnonces %}
+        
+            <tbody>
+                <tr>
+                    <td class="col-1"><img class"mx-auto d-block" style="border-radius: 60%;height:auto; width:100px; margin:auto; display:block;" src="{{leAnnonce.image}}" alt="Card image"></td>
+                    <td class="col-2">{{ leAnnonce.organisme }}</td>
+                    <td class="col-7">
+                        <p class="d-flex flex-row">
+                            <span class="align-self-center ml-auto">{{leAnnonce.prix}}</span>
+                        </p>
+                        <p>
+                            {{leAnnonce.description|slice(0,100)|raw}}
+                        </p>
+                    </td>
+                    <td class="col-2">
+                        <div class="d-flex justify-content-between">
+                            <a href=" {{path('adminA',{'id': leAnnonce.id})}} " class="btn btn-info" id="btn">
+                                <img src="{{ asset('img/modif.png') }}" style="width: 27px">
+                            </a>
+                            &nbsp;
+
+                            <a href="#" 
+                            class="btn btn-danger" 
+                            id="btn" 
+                            data-toggle="modal" 
+                            data-target="#modalSimple" 
+                            data-titre="Suppression d'un annonce"
+                            data-message="Etes vous sur de vouloir supprimer l'annonce : cette annonce"
+                            data-libelle-bouton="Supprimer"
+                            {# data-lien="{{ path('', {'id' : leAnnonce.id}) }}" #}
+                            >
+
+
+                                <img src="{{ asset('img/supp.png') }}" style="width: 27px">
+                            </a>
+                        </div>
+                    </td>
+
+                </tr>
+            
+        {% endfor %}
+            </tbody>
+    </table>
+
+    {# <div class="navi text-center mt-3 mb-3">
+            {{ knp_pagination_render(lesAnnonces) }}
+        </div> #}
+</div>
+
+{# {% include "include/_modal.html.twig" %} #}
+{% endblock %}
