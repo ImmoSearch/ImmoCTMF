@@ -9,37 +9,52 @@
     <script src="https://kit.fontawesome.com/40e99d708b.js" crossorigin="anonymous"></script>
     {% block stylesheets %}  {% endblock %}
 </head>
-<body style="margin: 0; padding: 0; overflow: hidden; position: relative;">
+<body style="min-height: 100vh; margin: 0;">
 
 <nav class="navbar navbar-expand-lg bg-light" data-bs-theme="light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="{{ path('app_accueil') }}">
-            <img style="max-width: 50px; margin-top: -7px;" src="img/logo.png" alt="Logo">
-            ImmoCTMF
-        </a>
+    <a class="navbar-brand" href="{{ path('app_accueil') }}">
+        <img style="max-width: 50px; margin-top: -7px;" src="img/logo.png" alt="Logo">
+        ImmoCTMF
+    </a>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <div class="collapse navbar-collapse" id="navbarColor02">
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Biens immobiliers</a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Maison & Villa</a>
-                        <a class="dropdown-item" href="#">Studio</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Administration</a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="{{ path('adminA')}}">Gérer vos annonces</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
+    <div class="collapse navbar-collapse" id="navbarColor02">
+        <ul class="navbar-nav me-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Bien immobilier</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Maison & Villa</a>
+                    <a class="dropdown-item" href="#">Appartement</a>
+                </div>
+            </li>
+        </ul>
     </div>
+
+    <ul class="navbar-nav my-auto">
+        {% if app.user %}
+            <li class="nav-item">
+                <img class="avatar supermini" src="{{ app.user.avatar }}" alt="photo de {{ app.user.fullName }}">
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{ app.user.fullName }}</a>
+                <div class="dropdown-menu dropdown-menu-end">
+                    <a class="dropdown-item" href="#"> Mon Profil</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{{ path('app_logout') }}">Se déconnecter</a>
+                </div>
+            </li>
+        {% else %}
+            <li class="nav-item">
+                <a href="{{ path('app_login') }}" class="nav-link">Se connecter</a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ path('app_register') }}" class="nav-link">S'inscrire</a>
+            </li>
+        {% endif %}
+    </ul>
 </nav>
 
 {% block body %}{% endblock %}

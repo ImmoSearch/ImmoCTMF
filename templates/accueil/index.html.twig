@@ -2,7 +2,6 @@
 {% block title %}Accueil Immo{% endblock %}
 
 {% block body %}
-
     <div class="jumbotron text-center" style="background-image: url('img/accueil.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center center; background-attachment: fixed; padding-top: 50px; height: calc(100vh - 56px); position: relative;">
         <div class="container">
             <h1 class="display-4">Bienvenue sur ImmoCTMF</h1>
@@ -13,9 +12,14 @@
             <a href="{{ path('biens') }}" class="btn btn-light">
                 Accéder aux annonces <i class="bi bi-arrow-right"></i>
             </a>
+=======
+            <button type="card-button" class="btn btn-Light" onclick="window.location.href='{{ path('biens') }}'">Accéder aux annonces</button>
         </div>
     </div>
 
+    <footer class="bg-light text-dark text-center" style="position: absolute; bottom: 10; width: 100%;">
+        <div class="container py-2">
+            <p>&copy; 2023 ImmoCTMF. Tous droits réservés.</p>
+        </div>
+    </footer>
 {% endblock %}
-
-
