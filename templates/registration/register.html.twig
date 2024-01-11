@@ -1,0 +1,33 @@
+    {% extends 'base.html.twig' %}
+
+    {% block title %}
+        Inscription
+    {% endblock %}
+
+    {% block body %}
+        <div class="container text-center">
+            {% for flash_error in app.flashes('verify_email_error') %}
+                <div class="alert alert-danger" role="alert">
+                    {{ flash_error }}
+                </div>
+            {% endfor %}
+    <br><br>
+        <h1 class="h3 mb-3 font-weight-normal">Inscription</h1>
+    <br>
+            <div class="mx-auto" style="width: 300px;">
+                {{ form_start(registrationForm) }}
+                    {{ form_row(registrationForm.email) }}
+
+                
+                    <label for="{{ registrationForm.plainPassword.vars.id }}"></label>
+                    {{ form_row(registrationForm.plainPassword, {
+                        'attr': {'autocomplete': 'new-password'}
+                    }) }}
+
+                    {{ form_row(registrationForm.agreeTerms) }}
+
+                    <button type="submit" class="btn btn-primary">S'inscrire</button>
+                {{ form_end(registrationForm) }}
+            </div>
+        </div>
+    {% endblock %}
